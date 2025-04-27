@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Délices Culinaires - Recettes de cuisine</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Découvrez des recettes de cuisine délicieuses et faciles à préparer">
+    <!-- Liens pour PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#f8f9fa">
+    <link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html">
+                        <i class="fas fa-utensils"></i>
+                        <span>Délices Culinaires</span>
+                    </a>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Rechercher une recette...">
+                    <button id="search-button"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Accueil</a></li>
+                    <li><a href="#" id="categories-link">Catégories</a></li>
+                    <li><a href="#" id="favorites-link">Favoris</a></li>
+                    <li class="auth-links">
+                        <a href="#" id="login-link">Connexion</a>
+                        <a href="#" id="register-link">Inscription</a>
+                    </li>
+                    <li class="user-profile hidden">
+                        <a href="#" id="profile-link">
+                            <i class="fas fa-user-circle"></i>
+                            <span id="user-name">Profil</span>
+                        </a>
+                        <a href="#" id="logout-link">Déconnexion</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Page d'accueil -->
+        <section id="home-page" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <h1>Découvrez des recettes délicieuses</h1>
+                    <p>Des idées culinaires pour tous les jours, faciles à préparer</p>
+                    <div class="hero-buttons">
+                        <button id="explore-button" class="btn btn-primary">Explorer les recettes</button>
+                        <button id="add-recipe-button" class="btn btn-secondary hidden">Ajouter une recette</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <section class="categories-section">
+                    <h2>Catégories populaires</h2>
+                    <div class="categories-container" id="categories-container">
+                        <!-- Les catégories seront générées dynamiquement ici -->
+                        <div class="category-card skeleton"></div>
+                        <div class="category-card skeleton"></div>
+                        <div class="category-card skeleton"></div>
+                        <div class="category-card skeleton"></div>
+                        <div class="category-card skeleton"></div>
+                    </div>
+                </section>
+
+                <section class="featured-recipes">
+                    <h2>Recettes à la une</h2>
+                    <div class="recipes-container" id="featured-recipes-container">
+                        <!-- Les recettes seront générées dynamiquement ici -->
+                        <div class="recipe-card skeleton"></div>
+                        <div class="recipe-card skeleton"></div>
+                        <div class="recipe-card skeleton"></div>
+                        <div class="recipe-card skeleton"></div>
+                    </div>
+                </section>
+
+                <section class="latest-recipes">
+                    <h2>Dernières recettes</h2>
+                    <div class="recipes-container" id="latest-recipes-container">
+                        <!-- Les recettes seront générées dynamiquement ici -->
+                        <div class="recipe-card skeleton"></div>
+                        <div class="recipe-card skeleton"></div>
+                        <div class="recipe-card skeleton"></div>
+                        <div class="recipe-card skeleton"></div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Page de détail d'une recette -->
+        <section id="recipe-detail-page" class="page">
+            <div class="container">
+                <div id="recipe-detail-container">
+                    <!-- Le détail de la recette sera généré dynamiquement ici -->
+                    <div class="recipe-detail skeleton"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page de catégories -->
+        <section id="categories-page" class="page">
+            <div class="container">
+                <h1>Catégories de recettes</h1>
+                <div class="all-categories-container" id="all-categories-container">
+                    <!-- Les catégories seront générées dynamiquement ici -->
+                    <div class="category-card skeleton"></div>
+                    <div class="category-card skeleton"></div>
+                    <div class="category-card skeleton"></div>
+                    <div class="category-card skeleton"></div>
+                    <div class="category-card skeleton"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page des recettes par catégorie -->
+        <section id="category-recipes-page" class="page">
+            <div class="container">
+                <h1 id="category-title">Recettes de la catégorie</h1>
+                <div class="recipes-container" id="category-recipes-container">
+                    <!-- Les recettes de la catégorie seront générées dynamiquement ici -->
+                    <div class="recipe-card skeleton"></div>
+                    <div class="recipe-card skeleton"></div>
+                    <div class="recipe-card skeleton"></div>
+                    <div class="recipe-card skeleton"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page de recherche -->
+        <section id="search-results-page" class="page">
+            <div class="container">
+                <h1>Résultats de recherche</h1>
+                <p id="search-query"></p>
+                <div class="recipes-container" id="search-results-container">
+                    <!-- Les résultats de recherche seront générés dynamiquement ici -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Page des favoris -->
+        <section id="favorites-page" class="page">
+            <div class="container">
+                <h1>Mes recettes favorites</h1>
+                <div class="recipes-container" id="favorites-container">
+                    <!-- Les recettes favorites seront générées dynamiquement ici -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Page de connexion -->
+        <section id="login-page" class="page">
+            <div class="container">
+                <div class="auth-form-container">
+                    <h1>Connexion</h1>
+                    <form id="login-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Mot de passe</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                    </form>
+                    <p class="auth-redirect">Pas encore de compte ? <a href="#" id="to-register-link">S'inscrire</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page d'inscription -->
+        <section id="register-page" class="page">
+            <div class="container">
+                <div class="auth-form-container">
+                    <h1>Inscription</h1>
+                    <form id="register-form" class="auth-form">
+                        <div class="form-group">
+                            <label for="register-name">Nom</label>
+                            <input type="text" id="register-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Mot de passe</label>
+                            <input type="password" id="register-password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirmer le mot de passe</label>
+                            <input type="password" id="register-confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">S'inscrire</button>
+                    </form>
+                    <p class="auth-redirect">Déjà un compte ? <a href="#" id="to-login-link">Se connecter</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page de profil -->
+        <section id="profile-page" class="page">
+            <div class="container">
+                <h1>Mon profil</h1>
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <h2 id="profile-name">Nom d'utilisateur</h2>
+                        <p id="profile-email">email@example.com</p>
+                        <button id="edit-profile-button" class="btn btn-secondary">Modifier le profil</button>
+                    </div>
+                    <div class="user-recipes">
+                        <h2>Mes recettes</h2>
+                        <button id="create-recipe-button" class="btn btn-primary">Créer une recette</button>
+                        <div class="recipes-container" id="user-recipes-container">
+                            <!-- Les recettes de l'utilisateur seront générées dynamiquement ici -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page de création/édition de recette -->
+        <section id="recipe-form-page" class="page">
+            <div class="container">
+                <h1 id="recipe-form-title">Créer une recette</h1>
+                <form id="recipe-form" class="recipe-form">
+                    <div class="form-group">
+                        <label for="recipe-title">Titre</label>
+                        <input type="text" id="recipe-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-description">Description</label>
+                        <textarea id="recipe-description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-category">Catégorie</label>
+                        <select id="recipe-category" required>
+                            <!-- Les catégories seront générées dynamiquement ici -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-prep-time">Temps de préparation (minutes)</label>
+                        <input type="number" id="recipe-prep-time" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-cook-time">Temps de cuisson (minutes)</label>
+                        <input type="number" id="recipe-cook-time" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-servings">Nombre de portions</label>
+                        <input type="number" id="recipe-servings" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ingrédients</label>
+                        <div id="ingredients-container">
+                            <div class="ingredient-row">
+                                <input type="text" class="ingredient-name" placeholder="Nom de l'ingrédient" required>
+                                <input type="text" class="ingredient-quantity" placeholder="Quantité" required>
+                                <input type="text" class="ingredient-unit" placeholder="Unité">
+                                <button type="button" class="remove-ingredient-btn"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-ingredient-btn" class="btn btn-secondary">Ajouter un ingrédient</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Instructions</label>
+                        <div id="instructions-container">
+                            <div class="instruction-row">
+                                <textarea class="instruction-text" placeholder="Étape de préparation" required></textarea>
+                                <button type="button" class="remove-instruction-btn"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <button type="button" id="add-instruction-btn" class="btn btn-secondary">Ajouter une instruction</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="recipe-image">Image</label>
+                        <input type="file" id="recipe-image" accept="image/*">
+                        <div id="image-preview"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" id="cancel-recipe-btn" class="btn btn-secondary">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-utensils"></i>
+                    <span>Délices Culinaires</span>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens rapides</h3>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#" class="categories-link">Catégories</a></li>
+                        <li><a href="#" class="favorites-link">Favoris</a></li>
+                        <li><a href="#" class="about-link">À propos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-envelope"></i> contact@delicesculinaires.fr</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Délices Culinaires - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modales -->
+    <div id="modal-container" class="modal-container hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modal-title">Titre de la modale</h2>
+                <button id="modal-close" class="modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div id="modal-content" class="modal-content">
+                <!-- Contenu de la modale -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden">
+        <div id="notification-content" class="notification-content"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/api.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/recipes.js"></script>
+    <script src="js/categories.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/sw-register.js"></script>
+</body>
+</html>

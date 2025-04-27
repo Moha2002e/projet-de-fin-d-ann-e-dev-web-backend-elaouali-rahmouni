@@ -1,0 +1,37 @@
+[
+  {
+    "id": "1",
+    "name": "Entrées",
+    "description": "Recettes d'entrées",
+    "createdAt": "2025-04-15T21:32:23.181Z",
+    "updatedAt": "2025-04-15T21:32:23.182Z"
+  },
+  {
+    "id": "2",
+    "name": "Plats principaux",
+    "description": "Recettes de plats principaux",
+    "createdAt": "2025-04-15T21:32:23.182Z",
+    "updatedAt": "2025-04-15T21:32:23.182Z"
+  },
+  {
+    "id": "3",
+    "name": "Desserts",
+    "description": "Recettes de desserts",
+    "createdAt": "2025-04-15T21:32:23.182Z",
+    "updatedAt": "2025-04-15T21:32:23.182Z"
+  },
+  {
+    "id": "4",
+    "name": "Boissons",
+    "description": "Recettes de boissons",
+    "createdAt": "2025-04-15T21:32:23.182Z",
+    "updatedAt": "2025-04-15T21:32:23.182Z"
+  },
+  {
+    "id": "5",
+    "name": "Végétarien",
+    "description": "Recettes végétariennes",
+    "createdAt": "2025-04-15T21:32:23.182Z",
+    "updatedAt": "2025-04-15T21:32:23.182Z"
+  }
+]
